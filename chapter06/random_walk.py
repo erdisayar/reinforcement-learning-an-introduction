@@ -49,7 +49,10 @@ def temporal_difference(values, alpha=0.1, batch=False):
         # TD update
         if not batch:
             values[old_state] += alpha * (reward + values[state] - values[old_state])
-        if state == 6 or state == 0:
+        if state == 0:
+            break
+        if state == 6:
+            reward = 1
             break
         rewards.append(reward)
     return trajectory, rewards
